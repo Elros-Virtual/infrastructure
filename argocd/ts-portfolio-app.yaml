@@ -11,6 +11,6 @@ spec:
     server: https://kubernetes.default.svc 
   project: default
   source:
-    path: k8s-deployments/toby-site
-    repoURL: https://github.com/IanRobertsWork/websites.git
+    path: toby-site
+    repoURL: https://github.com/Elros-Virtual/ts-portfolio.git
     targetRevision: HEAD
