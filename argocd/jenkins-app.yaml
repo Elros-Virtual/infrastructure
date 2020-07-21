@@ -11,6 +11,6 @@ spec:
     server: https://kubernetes.default.svc 
   project: default
   source:
-    path: k8s-deployments/jenkins
-    repoURL: https://github.com/IanRobertsWork/websites.git
+    path: kubernetes/jenkins
+    repoURL: https://github.com/Elros-Virtual/infrastructure.git
     targetRevision: HEAD
