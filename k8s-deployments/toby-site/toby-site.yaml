@@ -1,0 +1,57 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: tobysite
+    spec:
+        selector:
+            matchLabels:
+                app: tobysite
+        replicas: 1
+        template:
+            metadata:
+                labels:
+                    app: tobysite
+            spec:
+                containers: 
+                - name: tobysite
+                  image: tobz0r/websites:9
+                  imagePullPolicy: Always
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: tobysite-svc
+    spec:
+        selector:
+            app: tobysite
+        ports:
+            -
+                name: http
+                port: 8080
+                targetPort: 80
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: tobysite-ingress
+    spec:
+        rules:
+        - host: www.tobz0r.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: tobysite-svc
+                servicePort: 8080
+        - host: tobz0r.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: tobysite-svc
+                servicePort: 8080
