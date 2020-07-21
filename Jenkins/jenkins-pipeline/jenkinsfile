@@ -3,6 +3,7 @@ node('jenkins-slave') {
      stage('test pipeline') {
         sh(script: """
            git clone https://github.com/IanRobertsWork/websites.git
+
            cd ./websites/Website-dockerfiles/toby-site/
            
            docker login -u username  -p password
@@ -21,8 +22,9 @@ node('jenkins-slave') {
            
            git commit -a -m "updating tag"
            
-           git push https://password:usernamegithub.com/IanRobertsWork/websites.git
+           git push https://password:username@github.com/IanRobertsWork/websites.git
            
         """)
     }
 }
+
