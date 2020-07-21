@@ -1,0 +1,28 @@
+node('jenkins-slave') {
+    
+     stage('test pipeline') {
+        sh(script: """
+           git clone https://github.com/IanRobertsWork/websites.git
+           cd ./websites/Website-dockerfiles/toby-site/
+           
+           docker login -u username  -p password
+
+           docker build -f toby-site.dockerfile -t mranarion/websites:5 . --no-cache
+         
+           docker push mranarion/websites:5
+           
+           cd /home/jenkins/agent/workspace/test/websites/k8s-deployments/ian-site
+           
+           sed -i 's/testwebsite:2/testwebsite:5/g' ian-site.yaml
+           
+           git config user.email 'iar31.roberts@gmail.com'
+           
+           git config user.name 'iar31.roberts@gmail.com'
+           
+           git commit -a -m "updating tag"
+           
+           git push https://password:usernamegithub.com/IanRobertsWork/websites.git
+           
+        """)
+    }
+}
