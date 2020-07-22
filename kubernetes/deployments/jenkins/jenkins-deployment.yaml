@@ -90,7 +90,7 @@ metadata:
     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
   rules:
-  - host: jenkins.ianaroberts.co.uk
+  - host: jenkins.elrovirtual.co.uk
     http:
       paths:
       - backend:
