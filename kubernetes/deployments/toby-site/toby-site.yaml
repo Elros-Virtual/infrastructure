@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: tobysite
-                  image: tobz0r/websites:9
+                  image: elros-virtual/ts-portfolio:2
                   imagePullPolicy: Always
 
 
