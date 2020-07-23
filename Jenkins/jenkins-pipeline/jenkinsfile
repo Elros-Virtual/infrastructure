@@ -1,20 +1,26 @@
 node('jenkins-slave') {
-    
-     stage('test pipeline') {
+     stage('build pipeline') {
         sh(script: """
-           git clone https://github.com/IanRobertsWork/websites.git
+           git clone https://github.com/Elros-Virtual/ts-portfolio.git
+           
+           cd ./ts-portfolio/toby-site
 
-           cd ./websites/Website-dockerfiles/toby-site/
-           
-           docker login -u username  -p password
+           docker login -u mranarion  -p AN2479dy7881
 
-           docker build -f toby-site.dockerfile -t mranarion/websites:5 . --no-cache
-         
-           docker push mranarion/websites:5
+           docker build -f toby-site.dockerfile -t elrosvirtual/ts-portfolio:3 . --no-cache
+
+           docker push elrosvirtual/ts-portfolio:3
+
+        """)
+    }
+
+      stage('deploy pipeline') {
+        sh(script: """      
+           git clone https://github.com/Elros-Virtual/infrastructure.git
+
+           cd ./kubernetes/deployments/toby-site/
            
-           cd /home/jenkins/agent/workspace/test/websites/k8s-deployments/ian-site
-           
-           sed -i 's/testwebsite:2/testwebsite:5/g' ian-site.yaml
+           sed -i 's/ts-portfolio:2/ts-portfolio:3/g' toby-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
@@ -22,9 +28,8 @@ node('jenkins-slave') {
            
            git commit -a -m "updating tag"
            
-           git push https://password:username@github.com/IanRobertsWork/websites.git
+           git push https://password:username@github.com/Elros-Virtual/infrastructure.git
            
         """)
     }
 }
-
