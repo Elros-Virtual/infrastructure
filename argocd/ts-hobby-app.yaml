@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: toby-cv-site.yaml
+  name: toby-hobby-site.yaml
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,6 +11,6 @@ spec:
     server: https://kubernetes.default.svc 
   project: default
   source:
-    path: kubernetes/deployments/toby-cv-site
+    path: kubernetes/deployments/toby-hobby-site
     repoURL: https://github.com/Elros-Virtual/infrastructure.git
     targetRevision: HEAD
