@@ -12,9 +12,9 @@ node('jenkins-slave') {
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f cv-site.dockerfile -t elrosvirtual/ts-portfolio:3 . --no-cache
+           docker build -f cv-site.dockerfile -t elrosvirtual/ts-portfolio:4 . --no-cache
 
-           docker push elrosvirtual/ts-portfolio:3
+           docker push elrosvirtual/ts-portfolio:4
 
         """)
     }
@@ -26,9 +26,9 @@ node('jenkins-slave') {
         sh(script: """      
            git clone https://github.com/Elros-Virtual/infrastructure.git
 
-           cd ./infrastructure/kubernetes/deployments/toby-site/
+           cd ./infrastructure/kubernetes/deployments/toby-cv-site/
            
-           sed -i 's/ts-portfolio:2/ts-portfolio:3/g' toby-site.yaml
+           sed -i 's/ts-portfolio:3/ts-portfolio:4/g' toby-cv-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
