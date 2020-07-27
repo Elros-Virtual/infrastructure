@@ -2,19 +2,19 @@
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-        name: tobysite-dev
+        name: tobysite-hobby-dev
     spec:
         selector:
             matchLabels:
-                app: tobysite-dev
+                app: tobysite-hobby-dev
         replicas: 1
         template:
             metadata:
                 labels:
-                    app: tobysite-dev
+                    app: tobysite-hobby-dev
             spec:
                 containers: 
-                - name: tobysite-dev
+                - name: tobysite-hobby-dev
                   image: tobz0r/websites:3
                   imagePullPolicy: Always
 
@@ -23,10 +23,10 @@
     apiVersion: v1
     kind: Service
     metadata:
-        name: tobysite-dev-svc
+        name: tobysite-hobby-dev-svc
     spec:
         selector:
-            app: tobysite-dev
+            app: tobysite-hobby-dev
         ports:
             -
                 name: http
@@ -38,7 +38,7 @@
     apiVersion: networking.k8s.io/v1beta1
     kind: Ingress
     metadata:
-        name: tobysite-dev-ingress
+        name: tobysite-hobby-dev-ingress
     spec:
         rules:
         - host: dev.tobz0r.co.uk
@@ -46,5 +46,5 @@
             paths:
             - path: /
               backend:
-                serviceName: tobysite-dev-svc
+                serviceName: tobysite-hobby-dev-svc
                 servicePort: 8080
