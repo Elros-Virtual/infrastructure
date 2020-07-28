@@ -14,3 +14,4 @@ spec:
     path: kubernetes/deployments/toby-cv-site
     repoURL: https://github.com/Elros-Virtual/infrastructure.git
     targetRevision: HEAD
+  revisionHistoryLimit: 3
