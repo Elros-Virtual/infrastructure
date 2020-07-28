@@ -11,6 +11,6 @@ spec:
     server: https://kubernetes.default.svc 
   project: default
   source:
-    path: ian-cv-site
-    repoURL: https://github.com/Elros-Virtual/ir-portfolio.git
+    path: kubernetes/deployments/ian-cv-site
+    repoURL: https://github.com/Elros-Virtual/infrastructure.git
     targetRevision: HEAD
