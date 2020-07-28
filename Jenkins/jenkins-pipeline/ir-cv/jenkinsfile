@@ -10,11 +10,11 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/ir-portfolio.git
            
-           cd ./ts-portfolio/toby-cv-site
+           cd ./ir-portfolio/ian-cv-site
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f cv-site.dockerfile -t elrosvirtual/ir-portfolio:${new_image_tag} . --no-cache
+           docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${new_image_tag} . --no-cache
 
            docker push elrosvirtual/ir-portfolio:${new_image_tag}
 
