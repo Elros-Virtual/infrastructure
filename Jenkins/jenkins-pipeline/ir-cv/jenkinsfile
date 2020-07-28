@@ -1,20 +1,22 @@
 def docker_creds = 'c8dbaab7-9d00-447a-bc31-198d947a1967'
 def git_creds = '93b2a9b8-1201-4fcc-add9-2cbdfdc2b3c5'
+def current_image_tag = "${env.BUILD_ID}"
+def new_image_tag = "$current_image_tag".toInteger() + 1 
 node('jenkins-slave') {
     withCredentials([
       [$class: 'UsernamePasswordMultiBinding', credentialsId: docker_creds, usernameVariable: 'DOC_USER', passwordVariable: 'DOC_PASS'],
     ]){
      stage('build pipeline') {
         sh(script: """
-           git clone https://github.com/Elros-Virtual/ts-portfolio.git
+           git clone https://github.com/Elros-Virtual/ir-portfolio.git
            
-           cd ./ts-portfolio/toby-cv-site
+           cd ./ir-portfolio/ian-cv-site
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f cv-site.dockerfile -t elrosvirtual/ts-portfolio:4 . --no-cache
+           docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${new_image_tag} . --no-cache
 
-           docker push elrosvirtual/ts-portfolio:4
+           docker push elrosvirtual/ir-portfolio:${new_image_tag}
 
         """)
     }
@@ -26,15 +28,15 @@ node('jenkins-slave') {
         sh(script: """      
            git clone https://github.com/Elros-Virtual/infrastructure.git
 
-           cd ./infrastructure/kubernetes/deployments/toby-cv-site/
+           cd ./infrastructure/kubernetes/deployments/ian-cv-site/
            
-           sed -i 's/ts-portfolio:3/ts-portfolio:4/g' toby-cv-site.yaml
+           sed -i 's/ir-portfolio:${current_image_tag}/ir-portfolio:${new_image_tag}/g' ian-cv-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
            git config user.name 'iar31.roberts@gmail.com'
            
-           git commit -a -m "updating tag"
+           git commit -a -m "Updating image tag for deployment"
            
            git push https://${GiT_USER}:${GIT_PASS}@github.com/Elros-Virtual/infrastructure.git
            

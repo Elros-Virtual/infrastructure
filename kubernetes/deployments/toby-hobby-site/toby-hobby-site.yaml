@@ -55,3 +55,7 @@
               backend:
                 serviceName: tobysite-hobby-site-svc
                 servicePort: 8080
+        # tls:
+        # - secretName: wildcardcert
+        #   hosts:
+        #     - www.tobz0r.co.uk
