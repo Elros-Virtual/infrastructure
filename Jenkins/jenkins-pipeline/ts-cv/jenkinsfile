@@ -30,7 +30,7 @@ node('jenkins-slave') {
 
            cd ./infrastructure/kubernetes/deployments/toby-cv-site/
            
-           sed -i 's/ts-portfolio:./ts-portfolio:${new_image_tag}/g' toby-cv-site.yaml
+           sed -i 's/ts-portfolio:../ts-portfolio:${new_image_tag}/g' toby-cv-site.yaml
 
            git config user.email 'hello@elrosvirtual.co.uk'
            
