@@ -2,20 +2,20 @@
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-        name: iansite
+        name: ian-cv-site
     spec:
         selector:
             matchLabels:
-                app: iansite
+                app: ian-cv-site
         replicas: 1
         template:
             metadata:
                 labels:
-                    app: iansite
+                    app: ian-cv-site
             spec:
                 containers: 
-                - name: iansite
-                  image: mranarion/testwebsite:2
+                - name: ian-cv-site
+                  image: elrosvirtual/ir-portfolio:1
                   imagePullPolicy: Always
 
 
@@ -23,22 +23,22 @@
     apiVersion: v1
     kind: Service
     metadata:
-        name: iansite-svc
+        name: ian-cv-site-svc
     spec:
         selector:
-            app: iansite
+            app: ian-cv-site
         ports:
             -
                 name: http
                 port: 80
-                targetPort: 5000
+                targetPort: 50000
                 protocol: TCP
 
 ---
     apiVersion: networking.k8s.io/v1beta1
     kind: Ingress
     metadata:
-        name: iansite-ingress
+        name: ian-cv-site-ingress
     spec:
         rules:
         - host: www.ianaroberts.co.uk
@@ -46,5 +46,5 @@
             paths:
             - path: /
               backend:
-                serviceName: iansite-svc
+                serviceName: ian-cv-site-svc
                 servicePort: 80
