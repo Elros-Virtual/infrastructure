@@ -22,7 +22,7 @@ node('jenkins-slave') {
     }
     }
     withCredentials([
-      [$class: 'UsernamePasswordMultiBinding', credentialsId: git_creds, usernameVariable: 'GiT_USER', passwordVariable: 'GIT_PASS'],
+      [$class: 'UsernamePasswordMultiBinding', credentialsId: git_creds, usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS'],
     ]){
       stage('deploy pipeline') {
         sh(script: """      
@@ -31,14 +31,10 @@ node('jenkins-slave') {
            cd ./infrastructure/kubernetes/deployments/toby-cv-site/
            
            sed -i 's/ts-portfolio:${current_image_tag}/ts-portfolio:${new_image_tag}/g' toby-cv-site.yaml
-           
-           git config user.email 'iar31.roberts@gmail.com'
-           
-           git config user.name 'iar31.roberts@gmail.com'
-           
+            
            git commit -a -m "Updating image tag for deployment"
            
-           git push https://${GiT_USER}:${GIT_PASS}@github.com/Elros-Virtual/infrastructure.git
+           git push https://${GIT_USER}:${GIT_PASS}@github.com/Elros-Virtual/infrastructure.git
            
         """)
     }
