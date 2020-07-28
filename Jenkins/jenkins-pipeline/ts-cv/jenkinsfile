@@ -31,6 +31,10 @@ node('jenkins-slave') {
            cd ./infrastructure/kubernetes/deployments/toby-cv-site/
            
            sed -i 's/ts-portfolio:${current_image_tag}/ts-portfolio:${new_image_tag}/g' toby-cv-site.yaml
+
+           git config user.email 'hello@elrosvirtual.co.uk'
+           
+           git config user.name 'hello@elrosvirtual.co.uk'
             
            git commit -a -m "Updating image tag for deployment"
            
