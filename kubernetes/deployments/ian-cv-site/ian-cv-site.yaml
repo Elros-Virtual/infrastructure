@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: ian-cv-site
-                  image: elrosvirtual/ir-portfolio:14
+                  image: elrosvirtual/ir-portfolio:15
                   imagePullPolicy: Always
 
 
