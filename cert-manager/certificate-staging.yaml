@@ -1,12 +1,18 @@
 ---
-    apiVersion: cert-manager.io/v1alpha2
-    kind: Certificate
-    metadata:
-      name: dev.tobz0r.co.uk
-      namespace: cert-manager
-    spec:
-      dnsNames:
-        - dev.tobz0r.co.uk
-      secretName: dev-tobz0r
-      issuerRef:
-        name: letsencrypt-staging
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: dev.tobz0r.co.uk
+  namespace: cert-manager
+spec:
+  dnsNames:
+    - dev.tobz0r.co.uk
+  secretName: dev-tobz0r
+  issuerRef:
+    name: letsencrypt-staging
+  acme:
+    config:
+      - http01:
+          ingress: nginx
+        domains:
+          - dev.tobz0r.co.uk
