@@ -2,11 +2,11 @@
     apiVersion: cert-manager.io/v1alpha2
     kind: Certificate
     metadata:
-      name: selfsigned-cert
-      namespace: cert-manager-test
+      name: dev.tobz0r.co.uk
+      namespace: cert-manager
     spec:
       dnsNames:
-        - example.com
-      secretName: selfsigned-cert-tls
+        - dev.tobz0r.co.uk
+      secretName: dev-tobz0r
       issuerRef:
-        name: test-selfsigned
+        name: letsencrypt-staging
