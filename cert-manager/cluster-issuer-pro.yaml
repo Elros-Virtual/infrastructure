@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: hello@elrosvirutal.co.uk
+    http01: {}
+    privateKeySecretRef:
+      key: ""
+      name: letsencrypt-prod
+    server: https://acme-v02.api.letsencrypt.org/directory
