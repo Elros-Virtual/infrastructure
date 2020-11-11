@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: toby-cv-site
-                  image: elrosvirtual/ts-portfolio:56
+                  image: elrosvirtual/ts-portfolio:1
                   imagePullPolicy: Always
 
 
