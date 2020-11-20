@@ -1,0 +1,62 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: glyons
+    spec:
+        selector:
+            matchLabels:
+                app: glyons
+        replicas: 1
+        template:
+            metadata:
+                labels:
+                    app: glyons
+            spec:
+                containers: 
+                - name: glyons
+                  image: bitnami/moodle:latest
+                  imagePullPolicy: Always
+                  volumeMounts:
+                  - name: 
+                    mountpath: /bitnami/moodle
+                    readOnly: false
+                - name: glyons
+                  image: bitnami/mariadb:latest
+                  imagePullPolicy: Always
+                  volumeMounts:
+                  - name: 
+                    mountpath: /bitnami/mariad
+                    readOnly: false
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: glyons-svc
+    spec:
+        selector:
+            app: glyons
+        ports:
+            -
+                name: http
+                port: 80
+                targetPort: 8080
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: glyons-ingress
+    spec:
+        rules:
+        - host: training.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: glyons-svc
+                servicePort: 80
+  
