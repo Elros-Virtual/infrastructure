@@ -14,20 +14,24 @@
                     app: glyons
             spec:
                 containers: 
-                - name: glyons
+                - name: glyons-moodle
                   image: bitnami/moodle:latest
                   imagePullPolicy: Always
                   volumeMounts:
-                  - name: 
+                  - name: moodle
                     mountpath: /bitnami/moodle
                     readOnly: false
-                - name: glyons
+                - name: glyons-mariadb
                   image: bitnami/mariadb:latest
                   imagePullPolicy: Always
                   volumeMounts:
-                  - name: 
+                  - name: mariadb
                     mountpath: /bitnami/mariad
                     readOnly: false
+                volumes:
+                    - name: glyons
+                      persistentVolumeClaim:
+                        claimName: glyons-pvc
 
 
 ---
@@ -59,4 +63,15 @@
               backend:
                 serviceName: glyons-svc
                 servicePort: 80
-  
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: glyons-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
