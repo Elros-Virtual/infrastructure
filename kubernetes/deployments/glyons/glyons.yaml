@@ -19,14 +19,14 @@
                   imagePullPolicy: Always
                   volumeMounts:
                   - name: moodle
-                    mountpath: /bitnami/moodle
+                    mountPath: /bitnami/moodle
                     readOnly: false
                 - name: glyons-mariadb
                   image: bitnami/mariadb:latest
                   imagePullPolicy: Always
                   volumeMounts:
                   - name: mariadb
-                    mountpath: /bitnami/mariad
+                    mountPath: /bitnami/mariad
                     readOnly: false
                 volumes:
                     - name: glyons
