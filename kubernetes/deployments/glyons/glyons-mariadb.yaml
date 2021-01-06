@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: glyons-mariadb
+spec:
+    selector:
+            matchLabels:
+                app: glyons-mariadb
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: glyons-mariadb
+        spec:
+            containers:
+            - name: glyons-mariadb
+              image: bitnami/mariadb:latest
+              imagePullPolicy: Always
+              env:
+              - name: ALLOW_EMPTY_PASSWORD
+                value: "yes"
+              - name: MARIADB_USER
+                value: "bn_moodle"
+              - name: MARIADB_PASSWORD
+                value: "bitnami"
+              - name: MARIADB_DATABASE
+                value: "bitnami_moodle"
+              volumeMounts: 
+              - name: mariadb
+                mountPath: /bitnami/mariad
+            volumes:
+            - name: mariadb
+              persistentVolumeClaim:
+                claimName: mariadb-pvc
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: glyons-maria-svc
+    spec:
+        selector:
+            app: glyons-maria
+        ports:
+            -
+                name: http
+                port: 3306
+                targetPort: 3306
+                protocol: TCP
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
