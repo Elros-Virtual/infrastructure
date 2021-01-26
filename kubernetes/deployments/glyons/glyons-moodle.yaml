@@ -15,7 +15,7 @@ spec:
         spec:
             containers:
             - name: glyons-moodle
-              image: bitnami/moodle:latest
+              image: elrosvirtual/trainingsite:8
               imagePullPolicy: Always
               env:
               - name: ALLOW_EMPTY_PASSWORD
