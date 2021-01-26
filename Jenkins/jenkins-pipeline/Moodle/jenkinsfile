@@ -16,4 +16,5 @@ node('jenkins-slave') {
 
         """)
     }
+  }
 }
