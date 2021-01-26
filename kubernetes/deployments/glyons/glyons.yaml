@@ -1,0 +1,104 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: glyons
+spec:
+    selector:
+            matchLabels:
+                app: glyons
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: glyons
+        spec:
+            containers:
+            - name: glyons-moodle
+              image: bitnami/moodle:latest
+              imagePullPolicy: Always
+              volumeMounts:
+              - name: moodle
+                mountPath: /bitnami/moodle
+              args:
+                    - "ALLOW_EMPTY_PASSWORD=yes"
+                    - "MOODLE_DATABASE_USER=bn_moodle"
+                    - "MOODLE_DATABASE_PASSWORD=bitnami"
+                    - "MOODLE_DATABASE_NAME=bitnami_moodle"
+            - name: glyons-mariadb
+              image: bitnami/mariadb:latest
+              imagePullPolicy: Always
+              volumeMounts: 
+              - name: mariadb
+                mountPath: /bitnami/mariad
+              args:
+                    - "ALLOW_EMPTY_PASSWORD=yes"
+                    - "MARIADB_USER=bn_moodle"
+                    - "MARIADB_PASSWORD=bitnami"
+                    - "MARIADB_DATABASE=bitnami_moodle"
+            volumes:
+            - name: moodle
+              persistentVolumeClaim:
+                claimName: moodle-pvc
+            - name: mariadb
+              persistentVolumeClaim:
+                claimName: mariadb-pvc
+
+
+
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: glyons-svc
+    spec:
+        selector:
+            app: glyons
+        ports:
+            -
+                name: http
+                port: 80
+                targetPort: 8080
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: glyons-ingress
+    spec:
+        rules:
+        - host: training.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: glyons-svc
+                servicePort: 80
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: moodle-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
