@@ -10,35 +10,38 @@ node('jenkins-slave') {
            
            cd ./ir-portfolio/ian-cv-site
 
-           sudo docker login -u ${DOC_USER} -p ${DOC_PASS}
+           docker ps -a
 
-           sudo docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${env.BUILD_ID} . --no-cache
-
-           sudo docker push elrosvirtual/ir-portfolio:${env.BUILD_ID}
 
         """)
     }
     }
-    withCredentials([
-      [$class: 'UsernamePasswordMultiBinding', credentialsId: git_creds, usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS'],
-    ]){
-      stage('deploy pipeline') {
-        sh(script: """      
-           git clone https://github.com/Elros-Virtual/infrastructure.git
+//     withCredentials([
+//       [$class: 'UsernamePasswordMultiBinding', credentialsId: git_creds, usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS'],
+//     ]){
+//       stage('deploy pipeline') {
+//         sh(script: """      
+//            git clone https://github.com/Elros-Virtual/infrastructure.git
 
-           cd ./infrastructure/kubernetes/deployments/ian-cv-site/
+//            cd ./infrastructure/kubernetes/deployments/ian-cv-site/
            
-           sed -i 's/ir-portfolio:.*/ir-portfolio:${env.BUILD_ID}/g' ian-cv-site.yaml
+//            sed -i 's/ir-portfolio:.*/ir-portfolio:${env.BUILD_ID}/g' ian-cv-site.yaml
            
-           git config user.email 'hello@elrosvirtual.co.uk'
+//            git config user.email 'hello@elrosvirtual.co.uk'
            
-           git config user.name 'hello@elrosvirtual.co.uk'
+//            git config user.name 'hello@elrosvirtual.co.uk'
            
-           git commit -a -m "Updating image tag for deployment"
+//            git commit -a -m "Updating image tag for deployment"
            
-           git push https://${GIT_USER}:${GIT_PASS}@github.com/Elros-Virtual/infrastructure.git
+//            git push https://${GIT_USER}:${GIT_PASS}@github.com/Elros-Virtual/infrastructure.git
            
-        """)
-    }
-    }
+//         """)
+//     }
+//     }
 }
+
+          //  sudo docker login -u ${DOC_USER} -p ${DOC_PASS}
+
+          //  sudo docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${env.BUILD_ID} . --no-cache
+
+          //  sudo docker push elrosvirtual/ir-portfolio:${env.BUILD_ID}

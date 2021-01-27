@@ -26,8 +26,8 @@ spec:
                 value: "bitnami"
               - name: MOODLE_DATABASE_NAME
                 value: "bitnami_moodle"
-              - name: MOODLE_DATABASE_HOST
-                value: "glyons-maria-svc.default.svc.cluster.local"
+              # - name: MOODLE_DATABASE_HOST
+              #   value: "glyons-maria-svc.default.svc.cluster.local"
               volumeMounts:
               - name: moodle
                 mountPath: /bitnami/moodle
