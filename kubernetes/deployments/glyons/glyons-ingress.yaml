@@ -5,7 +5,7 @@
         name: glyons-svc
     spec:
         rules:
-        - host: training.elrosvirtual.co.uk
+        - host: athena.elrosvirtual.co.uk
           http:
             paths:
             - path: /
