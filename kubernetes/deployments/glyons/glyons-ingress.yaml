@@ -1,0 +1,14 @@
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: glyons-svc
+    spec:
+        rules:
+        - host: training.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: athena-moodle
+                servicePort: 80
