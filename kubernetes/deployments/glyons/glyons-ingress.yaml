@@ -3,8 +3,14 @@
     kind: Ingress
     metadata:
         name: glyons-svc
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-staging"
     spec:
-        rules:
+      tls:
+      - hosts:
+        - athena.elrosvirtual.co.uk
+        secretName: echo-tls
+      rules:
         - host: athena.elrosvirtual.co.uk
           http:
             paths:
@@ -12,3 +18,5 @@
               backend:
                 serviceName: athena-moodle
                 servicePort: 80
+
+
