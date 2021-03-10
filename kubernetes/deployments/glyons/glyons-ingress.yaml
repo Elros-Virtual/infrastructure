@@ -2,14 +2,14 @@
     apiVersion: networking.k8s.io/v1beta1
     kind: Ingress
     metadata:
-        name: glyons-svc
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        name: glyons-ingress
+        # annotations:
+        #   cert-manager.io/cluster-issuer: "letsencrypt-staging"
     spec:
       tls:
       - hosts:
         - athena.elrosvirtual.co.uk
-        secretName: echo-tls
+        secretName: athena-app-tls
       rules:
         - host: athena.elrosvirtual.co.uk
           http:
