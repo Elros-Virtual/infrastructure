@@ -10,11 +10,11 @@ node('jenkins-slave') {
            
            cd ./elros-home/www
 
-           docker login -u ${DOC_USER} -p ${DOC_PASS}
+           sudo docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f elros-home.dockerfile -t elrosvirtual/elros-home:${env.BUILD_ID} . --no-cache
+           sudo docker build -f elros-home.dockerfile -t elrosvirtual/elros-home:${env.BUILD_ID} . --no-cache
 
-           docker push elrosvirtual/elros-home:${env.BUILD_ID}
+           sudo docker push elrosvirtual/elros-home:${env.BUILD_ID}
 
         """)
     }
