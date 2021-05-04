@@ -8,15 +8,15 @@ node('jenkins-slave') {
     ]){
      stage('build pipeline') {
         sh(script: """
-           git clone https://github.com/Elros-Virtual/ts-portfolio.git
+           git clone https://github.com/Elros-Virtual/ir-hobby.git
            
-           cd ./ts-portfolio/toby-cv-site
+           cd ./castle-of-paint
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f cv-site.dockerfile -t elrosvirtual/ts-portfolio:${new_image_tag} . --no-cache
+           docker build -f castle-of-paint.dockerfile -t elrosvirtual/castle-of-paint:${new_image_tag} . --no-cache
 
-           docker push elrosvirtual/ts-portfolio:${new_image_tag}
+           docker push elrosvirtual/castle-of-paint:${new_image_tag}
 
         """)
     }
@@ -28,9 +28,9 @@ node('jenkins-slave') {
         sh(script: """      
            git clone https://github.com/Elros-Virtual/infrastructure.git
 
-           cd ./infrastructure/kubernetes/deployments/toby-cv-site/
+           cd ./infrastructure/kubernetes/deployments/castle-of-paint/
            
-           sed -i 's/ts-portfolio:${current_image_tag}/ts-portfolio:${new_image_tag}/g' toby-cv-site.yaml
+           sed -i 's/castle-of-paint:${current_image_tag}/castle-of-paint:${new_image_tag}/g' castle-of-paint.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            

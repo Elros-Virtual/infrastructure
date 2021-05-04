@@ -10,13 +10,13 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/ir-portfolio.git
            
-           cd ./ts-portfolio/toby-cv-site
+           cd ./ian-cv-site
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f cv-site.dockerfile -t elrosvirtual/ts-portfolio:${new_image_tag} . --no-cache
+           docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${new_image_tag} . --no-cache
 
-           docker push elrosvirtual/ts-portfolio:${new_image_tag}
+           docker push elrosvirtual/ir-portfolio:${new_image_tag}
 
         """)
     }
@@ -28,9 +28,9 @@ node('jenkins-slave') {
         sh(script: """      
            git clone https://github.com/Elros-Virtual/infrastructure.git
 
-           cd ./infrastructure/kubernetes/deployments/toby-cv-site/
+           cd ./infrastructure/kubernetes/deployments/ian-cv-site/
            
-           sed -i 's/ts-portfolio:${current_image_tag}/ts-portfolio:${new_image_tag}/g' toby-cv-site.yaml
+           sed -i 's/ir-portfolio:${current_image_tag}/ir-portfolio:${new_image_tag}/g' ian-cv-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
