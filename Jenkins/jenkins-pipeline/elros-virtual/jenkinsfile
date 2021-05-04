@@ -10,6 +10,8 @@ node('jenkins-slave') {
            
            cd ./elros-home/www
 
+           sudo chmod 666 /var/run/docker.sock
+
            sudo docker login -u ${DOC_USER} -p ${DOC_PASS}
 
            sudo docker build -f elros-home.dockerfile -t elrosvirtual/elros-home:${env.BUILD_ID} . --no-cache
