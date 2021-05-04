@@ -41,7 +41,7 @@
         name: castle-of-paint-ingress
     spec:
         rules:
-        - host: castle-of-paint.ianaroberts.co.uk
+        - host: castle-of-paint.elrosvirtual.co.uk
           http:
             paths:
             - path: /
