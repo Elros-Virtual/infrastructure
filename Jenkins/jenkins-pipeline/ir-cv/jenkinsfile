@@ -10,7 +10,7 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/ir-portfolio.git
            
-           cd ./ian-cv-site
+           cd ./ir-portfolio/ian-cv-site
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 

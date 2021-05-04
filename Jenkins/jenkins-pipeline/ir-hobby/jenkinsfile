@@ -10,7 +10,7 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/ir-hobby.git
            
-           cd ./castle-of-paint
+           cd ./ir-hobby/castle-of-paint
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
