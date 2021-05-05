@@ -10,7 +10,7 @@ node('jenkins-slave') {
            
            cd ./elros-home/www
 
-           sudo chmod 666 /var/run/docker.sock
+           chmod 666 /var/run/docker.sock
 
            sudo docker login -u ${DOC_USER} -p ${DOC_PASS}
 
