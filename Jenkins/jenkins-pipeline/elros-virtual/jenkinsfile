@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            whoami
 
-           ls -la /etc/sudoers.d/
+           su - root
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
