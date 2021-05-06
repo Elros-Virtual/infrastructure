@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            whoami
 
-           usermod -aG sudo docker
+           echo -e "${SUDOERS_USERNAME}\tALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$SUDOER_FILE_NAME")
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
