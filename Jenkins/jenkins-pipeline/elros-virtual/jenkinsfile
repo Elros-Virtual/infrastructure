@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            whoami
 
-           su - root
+           su - 
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
