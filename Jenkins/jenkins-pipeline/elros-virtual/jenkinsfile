@@ -12,9 +12,7 @@ node('jenkins-slave') {
 
            whoami
 
-           sudo su - root
-
-           chmod 666 /var/run/docker.sock
+           usermod -aG sudo docker
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
