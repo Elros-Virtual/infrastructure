@@ -30,7 +30,7 @@ node('jenkins-slave') {
 
            cd ./infrastructure/kubernetes/deployments/ian-cv-site/
            
-           sed -i 's/ir-portfolio:${current_image_tag}/ir-portfolio:${new_image_tag}/g' ian-cv-site.yaml
+           sed -i 's/ir-portfolio:.*/ir-portfolio:${new_image_tag}/g' ian-cv-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
