@@ -12,7 +12,13 @@ node('jenkins-slave') {
 
            whoami
 
-           usermod -aG docker docker
+           id -u docker
+
+           id -g docker
+
+           id -G docker
+
+           cat /etc/groups
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
