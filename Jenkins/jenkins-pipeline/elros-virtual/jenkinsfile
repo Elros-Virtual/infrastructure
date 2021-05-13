@@ -12,7 +12,9 @@ node('jenkins-slave') {
 
            whoami
 
-           echo -e "docker\tALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers"
+           groupadd docker
+
+           usermod -aG docker docker
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
