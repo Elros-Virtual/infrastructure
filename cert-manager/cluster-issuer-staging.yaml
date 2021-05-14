@@ -1,18 +1,3 @@
-# apiVersion: cert-manager.io/v1alpha2
-# kind: Issuer
-# metadata:
-#   name: letsencrypt-staging
-#   namespace: cert-manager
-# spec:
-#   acme:
-#     email: hello@elrosvirutal.co.uk
-#     http01: {}
-#     privateKeySecretRef:
-#       key: ""
-#       name: letsencrypt-staging
-#     server: https://acme-staging-v02.api.letsencrypt.org/directory
-
-
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:

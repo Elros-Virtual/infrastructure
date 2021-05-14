@@ -41,6 +41,10 @@
         name: castle-of-paint-ingress
     spec:
         rules:
+        tls:
+        - hosts:
+            - castle-of-paint.elrosvirtual.co.uk
+        secretName: castle-of-paint-app-tls
         - host: castle-of-paint.elrosvirtual.co.uk
           http:
             paths:
