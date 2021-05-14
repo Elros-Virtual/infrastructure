@@ -42,8 +42,8 @@
     spec:
         tls:
         - hosts:
-            - www.tobysykes.net
-            secretName: toby-cv-app-tls
+          - www.tobysykes.net
+          secretName: toby-cv-app-tls
         rules:
         - host: www.tobysykes.net
           http:

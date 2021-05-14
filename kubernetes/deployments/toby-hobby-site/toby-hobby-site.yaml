@@ -42,8 +42,8 @@
     spec:
         tls:
         - hosts:
-            - www.tobz0r.co.uk
-            secretName: toby-hobby-app-tls
+          - www.tobz0r.co.uk
+          secretName: toby-hobby-app-tls
         rules:
         - host: www.tobz0r.co.uk
           http:
