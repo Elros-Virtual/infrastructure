@@ -42,8 +42,8 @@
     spec:
         tls:
         - hosts:
-            - www.ianaroberts.co.uk
-            secretName: ian-cv-app-tls
+          - www.ianaroberts.co.uk
+          secretName: ian-cv-app-tls
         rules:
         - host: www.ianaroberts.co.uk
           http:
