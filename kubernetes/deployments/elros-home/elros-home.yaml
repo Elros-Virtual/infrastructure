@@ -40,6 +40,10 @@
     metadata:
         name: elros-home-ingress
     spec:
+        tls:
+        - hosts:
+          - www.elrosvirtual.co.uk
+          secretName: elros-app-tls
         rules:
         - host: www.elrosvirtual.co.uk
           http:
