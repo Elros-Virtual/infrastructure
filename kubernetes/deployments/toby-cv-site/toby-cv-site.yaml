@@ -40,6 +40,10 @@
     metadata:
         name: toby-cv-site-ingress
     spec:
+        tls:
+        - hosts:
+            - www.tobysykes.net
+            secretName: toby-cv-app-tls
         rules:
         - host: www.tobysykes.net
           http:

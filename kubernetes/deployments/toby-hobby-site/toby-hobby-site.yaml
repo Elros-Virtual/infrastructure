@@ -40,6 +40,10 @@
     metadata:
         name: tobysite-hobby-site-ingress
     spec:
+        tls:
+        - hosts:
+            - www.tobz0r.co.uk
+            secretName: toby-hobby-app-tls
         rules:
         - host: www.tobz0r.co.uk
           http:
@@ -55,7 +59,3 @@
               backend:
                 serviceName: tobysite-hobby-site-svc
                 servicePort: 8080
-        # tls:
-        # - secretName: wildcardcert
-        #   hosts:
-        #     - www.tobz0r.co.uk
