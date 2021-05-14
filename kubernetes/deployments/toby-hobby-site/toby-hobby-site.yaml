@@ -43,7 +43,7 @@
         tls:
         - hosts:
           - www.tobz0r.co.uk
-          secretName: toby-hobby-app-tls
+          secretName: tobysite-hobby-app-tls
         rules:
         - host: www.tobz0r.co.uk
           http:
