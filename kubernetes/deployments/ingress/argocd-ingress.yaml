@@ -8,6 +8,10 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
+  tls:
+  - hosts:
+    - argocd.elrosvirtual.co.uk
+    secretName: argocd-app-tls
   rules:
   - host: argocd.elrosvirtual.co.uk
     http:
