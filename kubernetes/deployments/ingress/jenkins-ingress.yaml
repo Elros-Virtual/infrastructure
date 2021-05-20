@@ -8,10 +8,10 @@ metadata:
     #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
-  # tls:
-  #   - hosts:
-  #     - jenkins.elrosvirtual.co.uk
-  #     secretName: jenkins-app-tls
+  tls:
+    - hosts:
+      - jenkins.elrosvirtual.co.uk
+      secretName: jenkins-app-tls
   rules:
   - host: jenkins.elrosvirtual.co.uk
     http:
