@@ -1,5 +1,5 @@
 def docker_creds = 'c8dbaab7-9d00-447a-bc31-198d947a1967'
-def git_creds = '3757f33a-5ba0-4afe-bb45-e389ecfda757'
+def git_creds = '93b2a9b8-1201-4fcc-add9-2cbdfdc2b3c5'
 node('jenkins-slave') {
     withCredentials([
       [$class: 'UsernamePasswordMultiBinding', credentialsId: docker_creds, usernameVariable: 'DOC_USER', passwordVariable: 'DOC_PASS'],
