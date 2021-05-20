@@ -30,7 +30,7 @@ node('jenkins-slave') {
 
            cd ./infrastructure/kubernetes/deployments/castle-of-paint/
            
-           sed -i 's/castle-of-paint:*/castle-of-paint:${new_image_tag}/g' castle-of-paint.yaml
+           sed -i 's/castle-of-paint:.*/castle-of-paint:${new_image_tag}/g' castle-of-paint.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
