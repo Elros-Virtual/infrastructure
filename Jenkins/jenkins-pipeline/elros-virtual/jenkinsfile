@@ -8,7 +8,7 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/elros-home.git
            
-           cd ./elros-home/www
+           cd ./elros-home
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
