@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f elros-home.dockerfile -t elrosvirtual/elros-home:${env.BUILD_ID} . --no-cache
+           docker build -f elros-home.dockerfile -t elrosvirtual/elros-home:${env.BUILD_ID} 
 
            docker push elrosvirtual/elros-home:${env.BUILD_ID}
 
