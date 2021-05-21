@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: elros-home
-                  image: elrosvirtual/elros-home:41
+                  image: elrosvirtual/elros-home:43
                   imagePullPolicy: Always
 
 
