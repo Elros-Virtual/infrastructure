@@ -6,15 +6,15 @@ node('jenkins-slave') {
     ]){
      stage('build pipeline') {
         sh(script: """
-           git clone https://github.com/Elros-Virtual/ts-portfolio.git
+           git clone https://github.com/Elros-Virtual/ts-hobby.git
            
-           cd ./ts-portfolio/toby-cv-site
+           cd ./ts-hobby/toby-hobby-site
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f cv-site.dockerfile -t elrosvirtual/ts-portfolio:4 . --no-cache
+           docker build -f cv-site.dockerfile -t elrosvirtual/ts-hobby:${env.BUILD_ID} . 
 
-           docker push elrosvirtual/ts-portfolio:4
+           docker push elrosvirtual/ts-hobby:${env.BUILD_ID}
 
         """)
     }
@@ -26,9 +26,9 @@ node('jenkins-slave') {
         sh(script: """      
            git clone https://github.com/Elros-Virtual/infrastructure.git
 
-           cd ./infrastructure/kubernetes/deployments/toby-cv-site/
+           cd ./infrastructure/kubernetes/deployments/toby-hobby-site/
            
-           sed -i 's/ts-portfolio:3/ts-portfolio:4/g' toby-cv-site.yaml
+           sed -i 's/ts-hobby:.*/ts-hobby:${env.BUILD_ID}/g' toby-hobby-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
