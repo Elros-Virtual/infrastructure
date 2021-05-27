@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f ts-site.dockerfile -t elrosvirtual/ts-hobby:${env.BUILD_ID} .
+           docker build -f toby-site.dockerfile -t elrosvirtual/ts-hobby:${env.BUILD_ID} .
 
            docker push elrosvirtual/ts-hobby:${env.BUILD_ID}
 
