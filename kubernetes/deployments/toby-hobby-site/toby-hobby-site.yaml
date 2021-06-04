@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: tobysite-hobby-site
-                  image: elrosvirtual/ts-hobby:6
+                  image: elrosvirtual/ts-hobby:7
                   imagePullPolicy: Always
 
 
