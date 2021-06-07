@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>HTML Cheatsheet</title>
+    <!-- Not displayed in page, used for links (CCS, JS) and metadata --->
+
+</head>
+
+<body>
+
+    <!-- 
+        Block Level (new line, full width)
+            <div>, <h1>-<h6>, <p>, <form>
+        Inline level (No new line,only required width )
+            <span>, <img>, <a>
+    -->
+
+    <h1>This is Heading One</h1>
+    <h2>This is Heading Two</h2>
+    <h3>This is Heading Three</h3>
+    <h4>This is Heading Four</h4>
+    <h5>This is Heading Five</h5>
+    <h6>This is Heading Six</h6>
+
+    <p>This is a paragraph</p>
+
+    <strong>makes things bold</strong>
+    <em>makes things italic</em>
+
+    <br /> <!-- line break -->
+    <hr> <!-- adds line -->
+
+    <a href="This is a link">Link name</a>
+
+    <a href="This is a link" target="_blank">This link opens new tab</a>
+
+    <!-- List 
+    adds bullets and padding -->
+    <ul>
+        <li>This is a list with bullets</li>
+        <li>This is a list with bullets</li>
+    </ul>
+
+    <ol>
+        <li>This is a list with numbers</li>
+        <li>This is a list with numbers</li>
+    </ol>
+
+    <!-- Table -->
+    <table>
+        <thead>
+            <!-- table Head -->
+            <tr>
+                <!-- table row -->
+                <th>Name</th> <!-- table head value -->
+                <th>Emai</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- table body -->
+            <tr>
+                <td>Person One</td> <!-- table data value -->
+                <td>one@one.com</td>
+                <td>1</td>
+            </tr>
+            <br>
+            <tr>
+                <td>Person Two</td> <!-- table data value -->
+                <td>two@two.com</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Forms -->
+    <form action="" method="POST">
+        <!-- send form to sever -->
+        <div>
+            <!-- Becomes block level -->
+            <label>Fist Name</label>
+            <input type="text" name="value of form">
+        </div>
+        <div>
+            <!-- Becomes block level -->
+            <label for="First">Second Name</label>
+            <input type="text" name="value of form">
+        </div>
+        <div>
+            <!-- Becomes block level -->
+            <label for="Emails">Email</label>
+            <input type="email" name="value of form">
+        </div>
+        <div>
+            <!-- Becomes block level -->
+            <label for="Message"></label>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <!-- Becomes block level -->
+            <label>Gender</label>
+            <select name="gender" id="">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div>
+            <!-- Becomes block level -->
+            <label>Age</label>
+            <input type="Number" , name="age" , value="30">
+        </div>
+        <div>
+            <!-- Becomes block level -->
+            <label>Date</label>
+            <input type="date" , name="Birthday">
+        </div>
+        <input type="Submit" name="submit" value="Submit">
+    </form>
+
+    <!-- Buttons -->
+    <button>Click me</button>
+
+    <!-- Images -->
+    <img src="source of file" alt="Text if it cannot find the image" width="" height="">
+
+    <blockquote cite="source"> input </blockquote> <!-- For quotes-->
+
+    <abbr title="">abbreviations </abbr>
+
+    <cite> makes thing itallic </cite>
+
+    <header></header>
+    <nav></nav>
+    <section></section>
+    <article>Blog</article>
+    <aside>On the site</aside>
+    <footer></footer>
+
+    <small> small content like dates </small>
+
+    <style type="text/css">
+        #header {
+            color: black;
+        }
+    </style>
+
+</body>
+
+</html>
