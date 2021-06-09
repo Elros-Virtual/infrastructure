@@ -1,0 +1,54 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: shaynemeissner
+    spec:
+        selector:
+            matchLabels:
+                app: shaynemeissner
+        replicas: 1
+        template:
+            metadata:
+                labels:
+                    app: shaynemeissner
+            spec:
+                containers: 
+                - name: shaynemeissner
+                  image: elrosvirtual/shaynemeissner:1
+                  imagePullPolicy: Always
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: shaynemeissner-svc
+    spec:
+        selector:
+            app: shaynemeissner
+        ports:
+            -
+                name: http
+                port: 80
+                targetPort: 5000
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: shaynemeissner-ingress
+    spec:
+        tls:
+        - hosts:
+          - shayne.elrosvirtual.co.uk
+          secretName: shayne-app-tls
+        rules:
+        - host: shayne.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: elros-home-svc
+                servicePort: 80
