@@ -50,5 +50,5 @@
             paths:
             - path: /
               backend:
-                serviceName: elros-home-svc
+                serviceName: shaynemeissner-svc
                 servicePort: 80
