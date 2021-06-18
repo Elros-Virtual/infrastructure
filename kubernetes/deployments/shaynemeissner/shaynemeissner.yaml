@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: shaynemeissner
-                  image: elrosvirtual/shaynemeissner:3
+                  image: elrosvirtual/shaynemeissner:4
                   imagePullPolicy: Always
 
 
