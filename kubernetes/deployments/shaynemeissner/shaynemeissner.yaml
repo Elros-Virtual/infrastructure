@@ -42,10 +42,10 @@
     spec:
         tls:
         - hosts:
-          - shayne.elrosvirtual.co.uk
+          - www.shaynemeissner.co.uk
           secretName: shayne-app-tls
         rules:
-        - host: shayne.elrosvirtual.co.uk
+        - host: www.shaynemeissner.co.uk
           http:
             paths:
             - path: /
