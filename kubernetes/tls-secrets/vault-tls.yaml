@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vault-app
+  namespace: default
+spec:
+  dnsNames:
+    - vault.elrosvirtual.co.uk
+  secretName: vault-app-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
