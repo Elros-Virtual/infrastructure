@@ -12,6 +12,10 @@
             metadata:
                 labels:
                     app: shaynemeissner
+                annotaions:
+                    vault.hashicrop.com/agent-inject: false
+                    vault.hashicrop.com/role: ""
+                    vault.hashicrop.com/agent-inject-secret-resources.properties: ""
             spec:
                 containers: 
                 - name: shaynemeissner
