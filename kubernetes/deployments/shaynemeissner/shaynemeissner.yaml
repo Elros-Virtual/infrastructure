@@ -20,7 +20,7 @@
                 serviceAccountName: internal-app
                 containers: 
                 - name: shaynemeissner
-                  image: elrosvirtual/shaynemeissner:7
+                  image: elrosvirtual/shaynemeissner:8
                   imagePullPolicy: Always
 
 
