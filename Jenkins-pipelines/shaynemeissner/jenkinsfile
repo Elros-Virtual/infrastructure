@@ -12,8 +12,8 @@ node('jenkins-slave') {
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f shaynemeissner.dockerfile -t elrosvirtual/shaynemeissner:${env.BUILD_ID} . --no-cache
-
+           docker build -f shaynemeissner.dockerfile -t elrosvirtual/shaynemeissner:${env.BUILD_ID} . 
+           
            docker push elrosvirtual/shaynemeissner:${env.BUILD_ID}
 
         """)
