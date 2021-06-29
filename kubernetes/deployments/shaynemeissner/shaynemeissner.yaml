@@ -13,9 +13,9 @@
                 labels:
                     app: shaynemeissner
                 annotations:
-                    vault.hashicrop.com/agent-inject: "true"
-                    vault.hashicrop.com/role: "internal-app"
-                    vault.hashicrop.com/agent-inject-secret-api-key.txt: "internal/data/keys/sendgrid"
+                    vault.hashicorp.com/agent-inject: "true"
+                    vault.hashicorp.com/role: "internal-app"
+                    vault.hashicorp.com/agent-inject-secret-api-key.txt: "internal/data/keys/sendgrid"
             spec:
                 serviceAccountName: internal-app
                 containers: 
