@@ -7,6 +7,8 @@ node('jenkins-slave') {
      stage('build pipeline') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/josh-test
+           
+           cd ./josh-test
 
            pwd
 
