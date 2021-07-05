@@ -8,9 +8,13 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/josh-test
 
+           pwd
+
+           ls -la
+
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f flask-jb.dockerfile -t elrosvirtual/josh-test:${env.BUILD_ID} .
+           docker build -f ./flask-jb.dockerfile -t elrosvirtual/josh-test:${env.BUILD_ID} .
 
            docker push elrosvirtual/josh-test:${env.BUILD_ID}
 
