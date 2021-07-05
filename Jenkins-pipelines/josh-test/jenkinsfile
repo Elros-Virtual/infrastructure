@@ -32,7 +32,7 @@ node('jenkins-slave') {
 
            cd ./infrastructure/kubernetes/deployments/josh-test
            
-           sed -i 's/josh-test:.*/josh-test:${env.BUILD_ID}/g' josh-test.yaml
+           sed -i 's/josh-test:.*/josh-test:${env.BUILD_ID}/g' josh-test-site.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
