@@ -1,0 +1,54 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: josh-test
+    spec:
+        selector:
+            matchLabels:
+                app: josh-test
+        replicas: 1
+        template:
+            metadata:
+                labels:
+                    app: josh-test
+            spec:
+                containers: 
+                - name: josh-test
+                  image: elrosvirtual/josh-test:1
+                  imagePullPolicy: Always
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: josh-test-svc
+    spec:
+        selector:
+            app: josh-test
+        ports:
+            -
+                name: http
+                port: 80
+                targetPort: 5000
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: josh-test-ingress
+    spec:
+        tls:
+        - hosts:
+          - josh-test.elrosvirtual.co.uk
+          secretName: josh-test-app-tls
+        rules:
+        - host: josh-test.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: josh-test-svc
+                servicePort: 80
