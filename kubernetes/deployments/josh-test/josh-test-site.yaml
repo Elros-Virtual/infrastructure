@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: josh-test
-                  image: elrosvirtual/josh-test:1
+                  image: elrosvirtual/josh-test:10
                   imagePullPolicy: Always
 
 
