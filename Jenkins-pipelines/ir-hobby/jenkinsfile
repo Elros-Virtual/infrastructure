@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f castle-of-paint.dockerfile -t elrosvirtual/castle-of-paint:${env.BUILD_ID} . --no-cache
+           docker build -f castle-of-paint.dockerfile -t elrosvirtual/castle-of-paint:${env.BUILD_ID} . 
 
            docker push elrosvirtual/castle-of-paint:${env.BUILD_ID}
 

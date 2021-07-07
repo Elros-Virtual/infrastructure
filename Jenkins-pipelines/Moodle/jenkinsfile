@@ -10,7 +10,7 @@ node('jenkins-slave') {
            
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f moodle.dockerfile -t elrosvirtual/trainingsite:${env.BUILD_ID} . --no-cache
+           docker build -f moodle.dockerfile -t elrosvirtual/trainingsite:${env.BUILD_ID} . 
 
            docker push elrosvirtual/trainingsite:${env.BUILD_ID}
 

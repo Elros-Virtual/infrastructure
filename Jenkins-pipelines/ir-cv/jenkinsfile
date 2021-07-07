@@ -12,7 +12,7 @@ node('jenkins-slave') {
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
-           docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${env.BUILD_ID} . --no-cache
+           docker build -f ian-cv-site.dockerfile -t elrosvirtual/ir-portfolio:${env.BUILD_ID} .
 
            docker push elrosvirtual/ir-portfolio:${env.BUILD_ID}
 
