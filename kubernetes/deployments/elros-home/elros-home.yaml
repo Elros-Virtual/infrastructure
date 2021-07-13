@@ -20,7 +20,7 @@
                 serviceAccountName: internal-app
                 containers: 
                 - name: elros-home
-                  image: elrosvirtual/elros-home:73
+                  image: elrosvirtual/elros-home:74
                   imagePullPolicy: Always
 
 
