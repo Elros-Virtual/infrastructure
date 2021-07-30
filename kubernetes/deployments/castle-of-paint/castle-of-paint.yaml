@@ -15,7 +15,7 @@
             spec:
                 containers: 
                 - name: ian-cv-site
-                  image: elrosvirtual/castle-of-paint:46
+                  image: elrosvirtual/castle-of-paint:47
                   imagePullPolicy: Always
 
 
