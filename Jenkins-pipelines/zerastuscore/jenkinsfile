@@ -8,7 +8,7 @@ node('jenkins-slave') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/zerastuscore.git
            
-           cd ./website-code
+           cd website-code
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
