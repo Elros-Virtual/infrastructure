@@ -20,7 +20,7 @@
                 serviceAccountName: internal-app
                 containers: 
                 - name: zerastuscore
-                  image: elrosvirtual/zerastuscore:9
+                  image: elrosvirtual/zerastuscore:10
                   imagePullPolicy: Always
 
 
