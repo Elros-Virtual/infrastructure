@@ -28,7 +28,7 @@ node('jenkins-slave') {
 
            cd ./infrastructure/kubernetes/deployments/zerastuscore/
            
-           sed -i 's/ts-hobby:.*/ts-hobby:${env.BUILD_ID}/g' zerastuscore.yaml
+           sed -i 's/zerastuscore:.*/zerastuscore:${env.BUILD_ID}/g' zerastuscore.yaml
            
            git config user.email 'iar31.roberts@gmail.com'
            
