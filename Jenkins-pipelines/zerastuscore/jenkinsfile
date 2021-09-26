@@ -14,7 +14,7 @@ node('jenkins-slave') {
 
            docker build -f zerastuscore.dockerfile -t elrosvirtual/zerastuscore:${env.BUILD_ID} .
 
-           docker push elrosvirtual/ts-hobby:${env.BUILD_ID}
+           docker push elrosvirtual/zerastuscore:${env.BUILD_ID}
 
         """)
     }
