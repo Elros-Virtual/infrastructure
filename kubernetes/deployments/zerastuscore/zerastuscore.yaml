@@ -1,0 +1,59 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: zerastuscore
+    spec:
+        selector:
+            matchLabels:
+                app: zerastuscore
+        replicas: 1
+        template:
+            metadata:
+                labels:
+                    app: zerastuscore
+                annotations:
+                    vault.hashicorp.com/agent-inject: "true"
+                    vault.hashicorp.com/role: "internal-app"
+                    vault.hashicorp.com/agent-inject-secret-api-key.txt: "internal/key"
+            spec:
+                serviceAccountName: internal-app
+                containers: 
+                - name: zerastuscore
+                  image: elrosvirtual/zerastuscore:74
+                  imagePullPolicy: Always
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: zerastuscore-svc
+    spec:
+        selector:
+            app: zerastuscore
+        ports:
+            -
+                name: http
+                port: 80
+                targetPort: 5000
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: zerastuscore-ingress
+    spec:
+        tls:
+        - hosts:
+          - zerastuscore.elrosvirtual.co.uk
+          secretName: zerastuscore-app-tls
+        rules:
+        - host: zerastuscore.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: zerastuscore-svc
+                servicePort: 80
