@@ -7,10 +7,8 @@ node('jenkins-slave') {
      stage('build pipeline') {
         sh(script: """
            git clone https://github.com/Elros-Virtual/zerastuscore.git
-           
-           ls -la 
-           
-           cd website-code
+
+           cd ./zerastuscore
 
            docker login -u ${DOC_USER} -p ${DOC_PASS}
 
