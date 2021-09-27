@@ -1,0 +1,59 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: barrowfalls
+    spec:
+        selector:
+            matchLabels:
+                app: barrowfalls
+        replicas: 1
+        template:
+            metadata:
+                labels:
+                    app: barrowfalls
+                annotations:
+                    vault.hashicorp.com/agent-inject: "true"
+                    vault.hashicorp.com/role: "internal-app"
+                    vault.hashicorp.com/agent-inject-secret-api-key.txt: "internal/key"
+            spec:
+                serviceAccountName: internal-app
+                containers: 
+                - name: barrowfalls
+                  image: elrosvirtual/barrowfalls:11
+                  imagePullPolicy: Always
+
+
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: barrowfalls-svc
+    spec:
+        selector:
+            app: barrowfalls
+        ports:
+            -
+                name: http
+                port: 80
+                targetPort: 5000
+                protocol: TCP
+
+---
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+        name: barrowfalls-ingress
+    spec:
+        tls:
+        - hosts:
+          - barrowfalls.elrosvirtual.co.uk
+          secretName: barrowfalls-app-tls
+        rules:
+        - host: barrowfalls.elrosvirtual.co.uk
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: barrowfalls-svc
+                servicePort: 80
