@@ -3,6 +3,7 @@
     kind: Deployment
     metadata:
         name: josh-test
+        namespace: default
     spec:
         selector:
             matchLabels:
@@ -24,6 +25,7 @@
     kind: Service
     metadata:
         name: josh-test-svc
+        namespace: default
     spec:
         selector:
             app: josh-test
@@ -39,6 +41,7 @@
     kind: Ingress
     metadata:
         name: josh-test-ingress
+        namespace: default
     spec:
         tls:
         - hosts:
