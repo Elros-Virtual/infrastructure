@@ -20,7 +20,7 @@
                 serviceAccountName: internal-app
                 containers: 
                 - name: barrowfalls
-                  image: elrosvirtual/barrowfalls:11
+                  image: elrosvirtual/barrowfalls:2
                   imagePullPolicy: Always
 
 
